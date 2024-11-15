@@ -84,6 +84,9 @@ namespace SuperFrank
 
             transform.position = _positionState * Vector3.up * _heightState;
             transform.rotation = _positionState;
+
+            float planeSpeed = new Vector2(_positionEulerVelocity.x, _positionEulerVelocity.z).magnitude;
+            _animator.SetFloat(_speedAnimId, planeSpeed + 1.0f);
         }
     }
 }
