@@ -4,20 +4,24 @@ namespace SuperFrank
 {
     public class Player : MonoBehaviour
     {
+        [Header("References")]
+        [SerializeField] private Planet _planet;
+        [SerializeField] private Transform _cameraPivot;
+        [SerializeField] private Animator _animator;
+
+        [Header("Movement")]
         [SerializeField] private float _movementSpeed = 5.0f;
         [SerializeField] private float _movementDamping = 10.0f;
-        [SerializeField] private float _aimSensitivity = 1.0f;
 
+        [Header("Jumping")]
         [SerializeField] private float _gravityForce = 10.0f;
         [SerializeField] private float _jumpVelocity = 30.0f;
 
-        [SerializeField] private float _baseHeight = 10.0f;
-        [SerializeField] private Transform _cameraPivot;
-
+        [Header("Aiming")]
+        [SerializeField] private float _aimSensitivity = 1.0f;
         [SerializeField] private float _camPitchStrength = 1.0f;
         [SerializeField] private float _camPitchSmoothTime = 1.0f;
 
-        [SerializeField] private Animator _animator;
 
         private Quaternion _positionState = Quaternion.identity;
         private float _heightState;
@@ -30,6 +34,7 @@ namespace SuperFrank
 
         private static readonly int _speedAnimId = Animator.StringToHash("speed");
 
+
         private void Awake()
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -38,7 +43,7 @@ namespace SuperFrank
 
         private void Start()
         {
-            _heightState = _baseHeight;
+            _heightState = _planet.GetBaseHeight(Quaternion.identity);
         }
 
         private void Update()
@@ -76,9 +81,10 @@ namespace SuperFrank
 
             _heightState += _heightVelocity * Time.deltaTime;
 
-            if (_heightState < _baseHeight)
+            float baseHeight = _planet.GetBaseHeight(Quaternion.identity);
+            if (_heightState < baseHeight)
             {
-                _heightState = _baseHeight;
+                _heightState = baseHeight;
                 _heightVelocity = 0.0f;
             }
 
