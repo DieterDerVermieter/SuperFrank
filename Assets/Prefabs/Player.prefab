@@ -78,16 +78,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0413afa6659a50e448ceba42428842ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 20
+  _planet: {fileID: 0}
+  _cameraPivot: {fileID: 6387677506050970994}
+  _animator: {fileID: 2422283459579152051}
+  _movementSpeed: 15
   _movementDamping: 10
-  _aimSensitivity: 200
   _gravityForce: 90
   _jumpVelocity: 25
-  _baseHeight: 10
-  _cameraPivot: {fileID: 6387677506050970994}
+  _aimSensitivity: 200
   _camPitchStrength: 50
   _camPitchSmoothTime: 0.1
-  _animator: {fileID: 2422283459579152051}
 --- !u!1 &7897466110380773641
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,13 +114,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7897466110380773641}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.42261827, y: -0, z: -0, w: 0.9063079}
-  m_LocalPosition: {x: 0, y: 8.290001, z: -6.19}
+  m_LocalRotation: {x: 0.30070576, y: 0, z: 0, w: 0.953717}
+  m_LocalPosition: {x: 0, y: 10, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6387677506050970994}
-  m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 35, y: 0, z: 0}
 --- !u!20 &1584109355423194751
 Camera:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 40
   orthographic: 0
   orthographic size: 5
   m_Depth: -1

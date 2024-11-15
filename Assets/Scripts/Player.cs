@@ -81,7 +81,7 @@ namespace SuperFrank
 
             _heightState += _heightVelocity * Time.deltaTime;
 
-            float baseHeight = _planet.GetBaseHeight(Quaternion.identity);
+            float baseHeight = _planet.GetBaseHeight(_positionState);
             if (_heightState < baseHeight)
             {
                 _heightState = baseHeight;
