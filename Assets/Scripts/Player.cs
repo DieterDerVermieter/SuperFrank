@@ -18,17 +18,17 @@ namespace SuperFrank
         [SerializeField] private float _gravityForce = 10.0f;
         [SerializeField] private float _jumpVelocity = 30.0f;
 
-        [Header("Collisions")]
-        [SerializeField] private float _collisionRadius = 1.0f;
-        [SerializeField] private LayerMask _collisionMask;
-
-        [SerializeField] private float _rotY = 0.0f;
+        [Header("Aiming")]
+        [SerializeField] private float _aimSensitivity = 1.0f;
+        [SerializeField] private float _camPitchStrength = 1.0f;
+        [SerializeField] private float _camPitchSmoothTime = 1.0f;
 
 
         private Vector3 _velocity;
 
         private Vector2 _movementInput;
-        private int _jumpBuffer = 100;
+        private Vector2 _aimInput;
+        private int _jumpBuffer = 0;
 
         private bool _isGrounded;
 
@@ -46,11 +46,11 @@ namespace SuperFrank
 
         private void Update()
         {
-            _movementInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            if (_movementInput != Vector2.zero) _movementInput = _movementInput.normalized;
+            _movementInput += new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            _aimInput += new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
             if (Input.GetButtonDown("Jump"))
-                _jumpBuffer = 0;
+                _jumpBuffer = 10;
 
             float planeSpeed = _velocity.magnitude;
             _animator.SetFloat(_speedAnimId, planeSpeed + 1.0f);
@@ -58,63 +58,57 @@ namespace SuperFrank
 
         private void FixedUpdate()
         {
-            // Vector3 currentUp = _rigidbody.position.normalized;
-            // Vector3 currentForward = _cameraPivot.forward;
-            // 
-            // Quaternion rot = Quaternion.LookRotation(currentForward, currentUp);
+            if (_movementInput != Vector2.zero)
+                _movementInput = _movementInput.normalized;
+
+            Quaternion rot = _rigidbody.rotation;
+            Vector3 forward = rot * Vector3.forward;
+            Vector3 right = rot * Vector3.right;
+            Vector3 up = rot * Vector3.up;
+
+            Vector3 targetUp = _rigidbody.position.normalized;
+
+            Quaternion rotDelta = Quaternion.FromToRotation(up, targetUp);
+            rotDelta *= Quaternion.AngleAxis(_aimInput.x * _aimSensitivity * Time.deltaTime, targetUp);
+
+            forward = rotDelta * forward;
+            right = rotDelta * right;
+            up = rotDelta * up;
+
+            Quaternion rotTotal = Quaternion.LookRotation(forward, up);
+            Quaternion rotInverse = Quaternion.Inverse(rotTotal);
 
             Vector3 velocity = _rigidbody.velocity;
-            Vector3 velocity0 = Quaternion.Inverse(transform.rotation) * velocity;
+            Vector3 velocity0 = rotInverse * velocity;
 
-            Vector2 movementForce = _movementInput * _movementSpeed * _movementDamping;
-            velocity0.x += movementForce.x * Time.deltaTime;
-            velocity0.z += movementForce.y * Time.deltaTime;
-
-            velocity0.y -= _gravityForce * Time.deltaTime;
-
-            if (_jumpBuffer < 6 && _isGrounded)
-                velocity0.y = _jumpVelocity;
-            _jumpBuffer++;
+            velocity0.x += _movementInput.x * _movementSpeed * _movementDamping * Time.deltaTime;
+            velocity0.z += _movementInput.y * _movementSpeed * _movementDamping * Time.deltaTime;
 
             velocity0.x /= 1.0f + _movementDamping * Time.deltaTime;
             velocity0.z /= 1.0f + _movementDamping * Time.deltaTime;
 
-            if (_isGrounded)
+            velocity0.y -= _gravityForce * Time.deltaTime;
+
+            if (_isGrounded && velocity0.y < 0.0f)
             {
-                // clamp velocity
-                if (velocity0.y < 0.0f) velocity0.y = 0.0f;
+                velocity0.y = 0.0f;
             }
 
-            velocity = transform.rotation * velocity0;
+            if (_isGrounded && _jumpBuffer > 0)
+            {
+                velocity0.y = _jumpVelocity;
+                _jumpBuffer = 0;
+            }
+
+            velocity = rotTotal * velocity0;
 
             _rigidbody.velocity = velocity;
-            transform.up = _rigidbody.position.normalized;
+            _rigidbody.rotation = rotTotal;
 
-
-            // Quaternion rot = Quaternion.FromToRotation(Vector3.up, _rigidbody.position.normalized) * Quaternion.Euler(0.0f, _rotY, 0.0f);
-            // 
-            // Vector2 movementForce = _movementInput * _movementSpeed * _movementDamping;
-            // _velocity.x += movementForce.x * Time.deltaTime;
-            // _velocity.z += movementForce.y * Time.deltaTime;
-            // 
-            // _velocity.y -= _gravityForce * Time.deltaTime;
-            // 
-            // if (_jumpBuffer < 6 && _isGrounded)
-            //     _velocity.y = _jumpVelocity;
-            // _jumpBuffer++;
-            // 
-            // _velocity /= 1.0f + _movementDamping * Time.deltaTime;
-            // 
-            // if (_isGrounded)
-            // {
-            //     // clamp velocity
-            //     if (_velocity.y < 0.0f) _velocity.y = 0.0f;
-            // }
-            // 
-            // _rigidbody.velocity = rot * _velocity;
-            // _rigidbody.rotation = rot;
-
+            _movementInput = Vector2.zero;
+            _aimInput = Vector2.zero;
             _isGrounded = false;
+            _jumpBuffer--;
         }
 
 
@@ -123,7 +117,7 @@ namespace SuperFrank
             int count = collision.GetContacts(_contacts);
             for (int i = 0; i < count; i++)
             {
-                _isGrounded |= Vector3.Dot(transform.up, _contacts[i].normal) > 0.7f;
+                _isGrounded |= Vector3.Dot(_rigidbody.rotation * Vector3.up, _contacts[i].normal) > 0.7f;
             }
         }
     }

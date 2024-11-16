@@ -27,9 +27,7 @@ namespace SuperFrank
             _camPitchCurrent = Mathf.SmoothDamp(_camPitchCurrent, camPitchTarget, ref _camPitchVelocity, _camPitchSmoothTime, 100.0f);
 
             transform.position = _followTarget.position;
-            transform.up = _followTarget.position.normalized;
-
-            _forwardPivot.localRotation *= Quaternion.Euler(0.0f, aimInput.x * _aimSensitivity * Time.deltaTime, 0.0f);
+            transform.rotation = _followTarget.rotation;
 
             // transform.up = Quaternion.Euler(_camPitchCurrent, 0.0f, 0.0f) * _followTarget.position.normalized;
         }
