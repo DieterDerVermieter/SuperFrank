@@ -6,8 +6,9 @@ namespace SuperFrank
     {
         [Header("References")]
         [SerializeField] private Planet _planet;
-        [SerializeField] private Transform _cameraPivot;
         [SerializeField] private Animator _animator;
+        [SerializeField] private Rigidbody _rigidbody;
+        [SerializeField] private Transform _cameraPivot;
 
         [Header("Movement")]
         [SerializeField] private float _movementSpeed = 5.0f;
@@ -23,16 +24,18 @@ namespace SuperFrank
         [SerializeField] private float _camPitchSmoothTime = 1.0f;
 
 
-        private Quaternion _positionState = Quaternion.identity;
-        private float _heightState;
+        private Vector3 _velocity;
 
-        private Vector3 _positionEulerVelocity;
-        private float _heightVelocity;
+        private Vector2 _movementInput;
+        private Vector2 _aimInput;
+        private int _jumpBuffer = 0;
 
-        private float _camPitchCurrent;
-        private float _camPitchVelocity;
+        private bool _isGrounded;
+
 
         private static readonly int _speedAnimId = Animator.StringToHash("speed");
+
+        private static readonly ContactPoint[] _contacts = new ContactPoint[16];
 
 
         private void Awake()
@@ -41,58 +44,81 @@ namespace SuperFrank
             Cursor.visible = false;
         }
 
-        private void Start()
-        {
-            _heightState = _planet.GetBaseHeight(Quaternion.identity);
-        }
-
         private void Update()
         {
-            Vector2 inputVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            inputVector = inputVector.normalized;
+            _movementInput += new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            _aimInput += new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
-            Vector2 mouseVector = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+            if (Input.GetButtonDown("Jump"))
+                _jumpBuffer = 10;
 
-            bool jumpPressed = Input.GetButtonDown("Jump");
-
-            float camPitchTarget = -mouseVector.y * _camPitchStrength;
-            _camPitchCurrent = Mathf.SmoothDamp(_camPitchCurrent, camPitchTarget, ref _camPitchVelocity, _camPitchSmoothTime, 100.0f);
-            _cameraPivot.localRotation = Quaternion.Euler(_camPitchCurrent, 0.0f, 0.0f);
-
-            _positionEulerVelocity.x += inputVector.y * _movementSpeed * _movementDamping * Time.deltaTime;
-            _positionEulerVelocity.z += -inputVector.x * _movementSpeed * _movementDamping * Time.deltaTime;
-
-            _positionEulerVelocity.y = mouseVector.x * _aimSensitivity;
-
-            _heightVelocity -= _gravityForce * Time.deltaTime;
-            if (jumpPressed)
-            {
-                _heightVelocity = _jumpVelocity;
-            }
-
-            _positionState *= Quaternion.Euler(
-                _positionEulerVelocity.x * Time.deltaTime,
-                _positionEulerVelocity.y * Time.deltaTime,
-                _positionEulerVelocity.z * Time.deltaTime
-                );
-
-            _positionEulerVelocity.x /= 1.0f + _movementDamping * Time.deltaTime;
-            _positionEulerVelocity.z /= 1.0f + _movementDamping * Time.deltaTime;
-
-            _heightState += _heightVelocity * Time.deltaTime;
-
-            float baseHeight = _planet.GetBaseHeight(_positionState);
-            if (_heightState < baseHeight)
-            {
-                _heightState = baseHeight;
-                _heightVelocity = 0.0f;
-            }
-
-            transform.position = _positionState * Vector3.up * _heightState;
-            transform.rotation = _positionState;
-
-            float planeSpeed = new Vector2(_positionEulerVelocity.x, _positionEulerVelocity.z).magnitude;
+            float planeSpeed = _velocity.magnitude;
             _animator.SetFloat(_speedAnimId, planeSpeed + 1.0f);
+        }
+
+        private void FixedUpdate()
+        {
+            if (_movementInput != Vector2.zero)
+                _movementInput = _movementInput.normalized;
+
+            Quaternion rot = _rigidbody.rotation;
+            Vector3 forward = rot * Vector3.forward;
+            Vector3 right = rot * Vector3.right;
+            Vector3 up = rot * Vector3.up;
+
+            Vector3 targetUp = _rigidbody.position.normalized;
+
+            Quaternion rotDelta = Quaternion.FromToRotation(up, targetUp);
+            rotDelta *= Quaternion.AngleAxis(_aimInput.x * _aimSensitivity * Time.deltaTime, targetUp);
+
+            forward = rotDelta * forward;
+            right = rotDelta * right;
+            up = rotDelta * up;
+
+            Quaternion rotTotal = Quaternion.LookRotation(forward, up);
+            Quaternion rotInverse = Quaternion.Inverse(rotTotal);
+
+            Vector3 velocity = _rigidbody.velocity;
+            Vector3 velocity0 = rotInverse * velocity;
+
+            velocity0.x += _movementInput.x * _movementSpeed * _movementDamping * Time.deltaTime;
+            velocity0.z += _movementInput.y * _movementSpeed * _movementDamping * Time.deltaTime;
+
+            velocity0.x /= 1.0f + _movementDamping * Time.deltaTime;
+            velocity0.z /= 1.0f + _movementDamping * Time.deltaTime;
+
+            velocity0.y -= _gravityForce * Time.deltaTime;
+
+            if (_isGrounded && velocity0.y < 0.0f)
+            {
+                velocity0.y = 0.0f;
+            }
+
+            if (_isGrounded && _jumpBuffer > 0)
+            {
+                velocity0.y = _jumpVelocity;
+                _jumpBuffer = 0;
+            }
+
+            velocity = rotTotal * velocity0;
+
+            _rigidbody.velocity = velocity;
+            _rigidbody.rotation = rotTotal;
+
+            _movementInput = Vector2.zero;
+            _aimInput = Vector2.zero;
+            _isGrounded = false;
+            _jumpBuffer--;
+        }
+
+
+        private void OnCollisionStay(Collision collision)
+        {
+            int count = collision.GetContacts(_contacts);
+            for (int i = 0; i < count; i++)
+            {
+                _isGrounded |= Vector3.Dot(_rigidbody.rotation * Vector3.up, _contacts[i].normal) > 0.7f;
+            }
         }
     }
 }
