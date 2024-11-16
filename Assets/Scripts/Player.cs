@@ -34,11 +34,14 @@ namespace SuperFrank
 
         private static readonly int _speedAnimId = Animator.StringToHash("speed");
 
-
+        private DialogueManager _dialogueManager;
+        
         private void Awake()
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            
+            _dialogueManager = DialogueManager.Instance;
         }
 
         private void Start()
@@ -48,6 +51,16 @@ namespace SuperFrank
 
         private void Update()
         {
+            if (_dialogueManager.AreAnyResponseButtonsVisible())
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                return;
+            }
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
             Vector2 inputVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             inputVector = inputVector.normalized;
 

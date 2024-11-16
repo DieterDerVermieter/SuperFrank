@@ -5,11 +5,24 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: af252182998621c489b54799afa92541, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: af252182998621c489b54799afa92541, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: af252182998621c489b54799afa92541, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: af252182998621c489b54799afa92541, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: af252182998621c489b54799afa92541, type: 3}
       propertyPath: m_LocalPosition.x
@@ -56,6 +69,15 @@ PrefabInstance:
       value: Animal_Snail_01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af252182998621c489b54799afa92541, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8462996187785222737}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af252182998621c489b54799afa92541, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 311110123265630726}
   m_SourcePrefab: {fileID: 100100000, guid: af252182998621c489b54799afa92541, type: 3}
 --- !u!1 &7802684196779109627 stripped
 GameObject:
@@ -70,9 +92,34 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7802684196779109627}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5339041016929996672, guid: af252182998621c489b54799afa92541, type: 3}
+--- !u!114 &311110123265630726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7802684196779109627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c54dbbfcf35ad7344aa168d3a8139326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _responses: []
+  _initialDialogue: 
+  _completedQuestDialogue: 
+  _noResponseDialogue: 
+  _questName: 

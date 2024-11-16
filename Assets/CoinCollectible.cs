@@ -12,7 +12,7 @@ public class CoinCollectible : Collectible
         {
             playerInventory.AddCoins(_coinValue);
         }
-
+        
         // Call the base Collect method to handle common logic
         base.Collect();
     }
