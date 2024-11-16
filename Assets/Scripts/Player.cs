@@ -17,11 +17,15 @@ namespace SuperFrank
         [Header("Jumping")]
         [SerializeField] private float _gravityForce = 10.0f;
         [SerializeField] private float _jumpVelocity = 30.0f;
+        [SerializeField] private float _groundedDistance = 1.1f;
 
         [Header("Aiming")]
         [SerializeField] private float _aimSensitivity = 1.0f;
         [SerializeField] private float _camPitchStrength = 1.0f;
         [SerializeField] private float _camPitchSmoothTime = 1.0f;
+
+        [Header("Effects")]
+        [SerializeField] private GameObject _landEffect;
 
 
         private Vector3 _velocity;
@@ -30,12 +34,11 @@ namespace SuperFrank
         private Vector2 _aimInput;
         private int _jumpBuffer = 0;
 
-        private bool _isGrounded;
+        private int _groundedCount;
+        private bool _hasLanded = true;
 
 
         private static readonly int _speedAnimId = Animator.StringToHash("speed");
-
-        private static readonly ContactPoint[] _contacts = new ContactPoint[16];
 
 
         private void Awake()
@@ -78,6 +81,17 @@ namespace SuperFrank
             Quaternion rotTotal = Quaternion.LookRotation(forward, up);
             Quaternion rotInverse = Quaternion.Inverse(rotTotal);
 
+            bool isGrounded = false;
+            bool isGroundedFull = false;
+            if (Physics.Raycast(transform.position + _rigidbody.centerOfMass, -up, out RaycastHit hit, _groundedDistance))
+            {
+                isGrounded = true;
+                isGroundedFull = hit.distance <= _groundedDistance * 0.9f;
+            }
+
+            Debug.Log($"isGrounded={isGrounded}");
+
+
             Vector3 velocity = _rigidbody.velocity;
             Vector3 velocity0 = rotInverse * velocity;
 
@@ -89,12 +103,12 @@ namespace SuperFrank
 
             velocity0.y -= _gravityForce * Time.deltaTime;
 
-            if (_isGrounded && velocity0.y < 0.0f)
+            if (isGroundedFull && velocity0.y < 0.0f)
             {
                 velocity0.y = 0.0f;
             }
 
-            if (_isGrounded && _jumpBuffer > 0)
+            if (isGrounded && _jumpBuffer > 0)
             {
                 velocity0.y = _jumpVelocity;
                 _jumpBuffer = 0;
@@ -105,20 +119,30 @@ namespace SuperFrank
             _rigidbody.velocity = velocity;
             _rigidbody.rotation = rotTotal;
 
+            if (isGrounded && !_hasLanded)
+            {
+                _hasLanded = true;
+                GameObject effect = Instantiate(_landEffect, transform.position, transform.rotation);
+                effect.AddComponent<DestroySystemWhenFinished>();
+            }
+            else if (!isGrounded)
+            {
+                _hasLanded = false;
+            }
+
             _movementInput = Vector2.zero;
             _aimInput = Vector2.zero;
-            _isGrounded = false;
             _jumpBuffer--;
         }
 
 
-        private void OnCollisionStay(Collision collision)
+        private void OnDrawGizmosSelected()
         {
-            int count = collision.GetContacts(_contacts);
-            for (int i = 0; i < count; i++)
-            {
-                _isGrounded |= Vector3.Dot(_rigidbody.rotation * Vector3.up, _contacts[i].normal) > 0.7f;
-            }
+            Vector3 start = transform.position + _rigidbody.centerOfMass;
+            Vector3 end = start - transform.up * _groundedDistance;
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawLine(start, end);
+            Gizmos.DrawSphere(end, 0.1f);
         }
     }
 }
