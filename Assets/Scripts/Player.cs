@@ -10,7 +10,7 @@ namespace SuperFrank
         [SerializeField] private Animator _animator;
 
         [Header("Movement")]
-        [SerializeField] private float _movementSpeed = 5.0f;
+        [SerializeField] private float _movementSpeed = 150.0f;
         [SerializeField] private float _movementDamping = 10.0f;
 
         [Header("Jumping")]
