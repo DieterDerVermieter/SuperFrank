@@ -22,6 +22,8 @@ namespace SuperFrank
         [SerializeField] private float _collisionRadius = 1.0f;
         [SerializeField] private LayerMask _collisionMask;
 
+        [SerializeField] private float _rotY = 0.0f;
+
 
         private Vector3 _velocity;
 
@@ -56,32 +58,61 @@ namespace SuperFrank
 
         private void FixedUpdate()
         {
-            Vector3 currentUp = _rigidbody.position.normalized;
-            Vector3 currentForward = _cameraPivot.forward;
+            // Vector3 currentUp = _rigidbody.position.normalized;
+            // Vector3 currentForward = _cameraPivot.forward;
+            // 
+            // Quaternion rot = Quaternion.LookRotation(currentForward, currentUp);
 
-            Quaternion rot = Quaternion.LookRotation(currentForward, currentUp);
+            Vector3 velocity = _rigidbody.velocity;
+            Vector3 velocity0 = Quaternion.Inverse(transform.rotation) * velocity;
 
             Vector2 movementForce = _movementInput * _movementSpeed * _movementDamping;
-            _velocity.x += movementForce.x * Time.deltaTime;
-            _velocity.z += movementForce.y * Time.deltaTime;
+            velocity0.x += movementForce.x * Time.deltaTime;
+            velocity0.z += movementForce.y * Time.deltaTime;
 
-            _velocity.y -= _gravityForce * Time.deltaTime;
+            velocity0.y -= _gravityForce * Time.deltaTime;
 
             if (_jumpBuffer < 6 && _isGrounded)
-                _velocity.y = _jumpVelocity;
+                velocity0.y = _jumpVelocity;
             _jumpBuffer++;
 
-            _velocity.x /= 1.0f + _movementDamping * Time.deltaTime;
-            _velocity.z /= 1.0f + _movementDamping * Time.deltaTime;
+            velocity0.x /= 1.0f + _movementDamping * Time.deltaTime;
+            velocity0.z /= 1.0f + _movementDamping * Time.deltaTime;
 
             if (_isGrounded)
             {
                 // clamp velocity
-                if (_velocity.y < 0.0f) _velocity.y = 0.0f;
+                if (velocity0.y < 0.0f) velocity0.y = 0.0f;
             }
 
-            _rigidbody.velocity = rot * _velocity;
-            _rigidbody.rotation = rot;
+            velocity = transform.rotation * velocity0;
+
+            _rigidbody.velocity = velocity;
+            transform.up = _rigidbody.position.normalized;
+
+
+            // Quaternion rot = Quaternion.FromToRotation(Vector3.up, _rigidbody.position.normalized) * Quaternion.Euler(0.0f, _rotY, 0.0f);
+            // 
+            // Vector2 movementForce = _movementInput * _movementSpeed * _movementDamping;
+            // _velocity.x += movementForce.x * Time.deltaTime;
+            // _velocity.z += movementForce.y * Time.deltaTime;
+            // 
+            // _velocity.y -= _gravityForce * Time.deltaTime;
+            // 
+            // if (_jumpBuffer < 6 && _isGrounded)
+            //     _velocity.y = _jumpVelocity;
+            // _jumpBuffer++;
+            // 
+            // _velocity /= 1.0f + _movementDamping * Time.deltaTime;
+            // 
+            // if (_isGrounded)
+            // {
+            //     // clamp velocity
+            //     if (_velocity.y < 0.0f) _velocity.y = 0.0f;
+            // }
+            // 
+            // _rigidbody.velocity = rot * _velocity;
+            // _rigidbody.rotation = rot;
 
             _isGrounded = false;
         }
