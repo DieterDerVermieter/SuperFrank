@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 526d9460d030a324e9db19a7e0609b72, type: 3}
+  m_Name: Tool Heist Get It Back Active
+  m_EditorClassIdentifier: 
+  ActiveText: "Hello Text: Oh, ein Wal! Damit hab ich ja gar nicht gerechnet... Was
+    kann ich f\xFCr dich tun, Super Wal Frank?"
+  DoneText: "Du hast dein Wort gehalten, danke dir! Hier ist mein ganzes Werkzeug,
+    wie versprochen. Und noch ein Tipp: Solltest du mal Federn brauchen, frag doch
+    mal bei Flug-Florian \u2013 er lebt oben in den Bergen und hat sicher welche
+    f\xFCr dich!"
+  NeededAmount: 5
+  NextQuests: []

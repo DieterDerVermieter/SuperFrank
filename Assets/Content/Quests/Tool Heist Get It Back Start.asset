@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 526d9460d030a324e9db19a7e0609b72, type: 3}
-  m_Name: The Call of the Deep
+  m_Name: Tool Heist Get It Back Start
   m_EditorClassIdentifier: 
-  ActiveText: "Arghhh... Wir haben nicht viel Zeit... Du wirst es w\xE4hrend deiner
-    Reise verstehen. Ich brauche deine Hilfe damit wir wieder in den Ozean zur\xFCckkehren
-    k\xF6nnen. Ist das nun klar ?"
-  DoneText: ...
-  NeededAmount: 5
-  NextQuests:
-  - {fileID: 11400000, guid: 1b11e6614e0c4e0409b3589ae4d3b15b, type: 2}
+  ActiveText: ...
+  DoneText: "Hello Text: Oh, ein Wal! Damit hab ich ja gar nicht gerechnet... Was
+    kann ich f\xFCr dich tun, Super Wal Frank?"
+  NeededAmount: 0
+  NextQuests: []

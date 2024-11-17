@@ -68,13 +68,7 @@ public class DialogueManager : MonoBehaviour
         {
             if (i < responses.Length)
             {
-                bool responseClicked = PlayerPrefs.GetInt("Response_" + responses[i].responseText, 0) == 1;
-                
-                if (!responseClicked)
-                {
-                    _responseButtons[i].gameObject.SetActive(true);
-                }
-                
+                _responseButtons[i].gameObject.SetActive(true);
                 _responseButtons[i].GetComponentInChildren<TMP_Text>().text = responses[i].responseText;
 
                 int responseIndex = i;
@@ -86,8 +80,8 @@ public class DialogueManager : MonoBehaviour
                 _responseButtons[i].gameObject.SetActive(false);
             }
         }
-        
-        _stopDialogueButton.gameObject.SetActive(AreAnyResponseButtonsVisible());
+
+        // _stopDialogueButton.gameObject.SetActive(AreAnyResponseButtonsVisible());
     }
 
     private void OnResponseSelected(Button clickedButton, int responseIndex)
@@ -95,12 +89,10 @@ public class DialogueManager : MonoBehaviour
         Response selectedResponse = _currentResponses[responseIndex];
         clickedButton.gameObject.SetActive(false);
         
-        PlayerPrefs.SetInt("Response_" + selectedResponse.responseText, 1);
-        PlayerPrefs.Save();
-        
         ShowDialogue(selectedResponse.reply);
-        
-        _stopDialogueButton.gameObject.SetActive(_responseButtons.Any(i=> i.IsActive()));
+        DeactivateAllButtons();
+
+        // _stopDialogueButton.gameObject.SetActive(_responseButtons.Any(i=> i.IsActive()));
     }
     
     public bool AreAnyResponseButtonsVisible()

@@ -1,7 +1,6 @@
 ﻿using SuperFrank;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class NPCInteraction : MonoBehaviour
@@ -62,10 +61,15 @@ public class NPCInteraction : MonoBehaviour
                 if (!hasItems)
                 {
                     DialogueManager.Instance.ShowDialogue(_quests[i].ActiveText);
+                    if (_quests[i].ActiveResponses != null && _quests[i].ActiveResponses.Length > 0)
+                        DialogueManager.Instance.ShowResponseDialogue(_quests[i].ActiveResponses);
                 }
                 else
                 {
                     DialogueManager.Instance.ShowDialogue(_quests[i].DoneText);
+                    if (_quests[i].DoneResponses != null && _quests[i].DoneResponses.Length > 0)
+                        DialogueManager.Instance.ShowResponseDialogue(_quests[i].DoneResponses);
+
                     _quests[i].Data.IsActive = false;
                     _quests[i].Data.ItemCounter = 0;
                     for (int j = 0; j < _quests[i].NextQuests.Length; j++)

@@ -11,8 +11,11 @@ namespace SuperFrank
     [CreateAssetMenu(menuName = "Quest")]
     public class Quest : ScriptableObject
     {
-        public string ActiveText = "Please help me";
-        public string DoneText = "Thank you";
+        [TextArea(2, 10)] public string ActiveText = "Please help me";
+        [TextArea(2, 10)] public string DoneText = "Thank you";
+
+        public Response[] ActiveResponses;
+        public Response[] DoneResponses;
 
         public int NeededAmount;
         public Quest[] NextQuests;
