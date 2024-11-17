@@ -1,12 +1,18 @@
-﻿using System;
+﻿using SuperFrank;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
+    [SerializeField] private Quest _startQuest;
+
+    [SerializeField] private List<Quest> _allQuests;
+    [SerializeField] private List<Quest> _activeQuests;
+
+
     public static QuestManager Instance;
 
-    public List<Quest> quests;
 
     private void Awake()
     {
@@ -19,48 +25,13 @@ public class QuestManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        _startQuest.Data.IsActive = true;
     }
 
-    private void Start()
+    private void Update()
     {
-        LoadQuestStatus();
-    }
-
-    public void CompleteQuest(string questName)
-    {
-        Quest quest = quests.Find(q => q.QuestName == questName);
-        if (quest != null)
-        {
-            quest.IsCompleted = true;
-            SaveQuestStatus();
-        }
-    }
-
-    public bool IsQuestCompleted(string questName)
-    {
-        Quest quest = quests.Find(q => q.QuestName == questName);
-        return quest != null && quest.IsCompleted;
-    }
-    
-    public void LoadQuestStatus()
-    {
-        foreach (var quest in quests)
-        {
-            quest.IsCompleted = PlayerPrefs.GetInt(quest.QuestName, 0) == 1;
-        }
-    }
-    
-    public void SaveQuestStatus()
-    {
-        foreach (var quest in quests)
-        {
-            PlayerPrefs.SetInt(quest.QuestName, quest.IsCompleted ? 1 : 0);
-        }
-        PlayerPrefs.Save();
-    }
-    
-    public void ResetAllSavedData()
-    {
-        PlayerPrefs.DeleteAll();
+        _activeQuests.Clear();
+        _activeQuests.AddRange(_allQuests.Where(q => q.Data.IsActive));
     }
 }

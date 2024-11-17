@@ -1,22 +1,31 @@
-﻿using TMPro;
+﻿using SuperFrank;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NPCInteraction : MonoBehaviour
 {
-    [SerializeField] private Response[] _responses;
-    
-    // Define the NPC dialogue
-    [SerializeField] private string _initialDialogue;
-    
-    // Dialogue when the related quest is completed
-    [SerializeField] private string _completedQuestDialogue;
-    [SerializeField] private string _noResponseDialogue;
+    [SerializeField] private Quest[] _quests;
 
-    // Name of the associated quest
-    [SerializeField] private string _questName;
+    [SerializeField] private TMP_Text _nameText;
+    [SerializeField] private Image _iconImage;
+
+    [Header("Dialog")]
+
+    // Define the NPC dialogue
+    [SerializeField] private string _name = "Alex";
+    [SerializeField] private string _noQuestDialogue = "Nothing to do";
+
 
     // Check if player is close to the NPC
     private bool _isPlayerInRange;
+
+
+    private void Start()
+    {
+        _nameText.text = _name;
+    }
+
 
     void Update()
     {
@@ -25,29 +34,63 @@ public class NPCInteraction : MonoBehaviour
         {
             TriggerDialogue();
         }
+
+        bool hasActiveQuest = false;
+        for (int i = 0; i < _quests.Length; i++)
+        {
+            if (_quests[i].Data.IsActive)
+            {
+                bool hasItems = _quests[i].Data.ItemCounter >= _quests[i].NeededAmount;
+                _iconImage.color = hasItems ? Color.green : Color.yellow;
+                hasActiveQuest = true;
+                break;
+            }
+        }
+        _iconImage.gameObject.SetActive(hasActiveQuest);
     }
 
     // Display the dialogue
     void TriggerDialogue()
     {
-        if (!string.IsNullOrEmpty(_questName) && QuestManager.Instance.IsQuestCompleted(_questName))
+        bool hasActiveQuest = false;
+        for (int i = 0; i < _quests.Length; i++)
         {
-            DialogueManager.Instance.ShowDialogue(_completedQuestDialogue);
+            if (_quests[i].Data.IsActive)
+            {
+                bool hasItems = _quests[i].Data.ItemCounter >= _quests[i].NeededAmount;
+                if (!hasItems)
+                {
+                    DialogueManager.Instance.ShowDialogue(_quests[i].ActiveText);
+                    if (_quests[i].ActiveResponses != null && _quests[i].ActiveResponses.Length > 0)
+                        DialogueManager.Instance.ShowResponseDialogue(_quests[i].ActiveResponses);
+                }
+                else
+                {
+                    DialogueManager.Instance.ShowDialogue(_quests[i].DoneText);
+                    if (_quests[i].DoneResponses != null && _quests[i].DoneResponses.Length > 0)
+                        DialogueManager.Instance.ShowResponseDialogue(_quests[i].DoneResponses);
+
+                    _quests[i].Data.IsActive = false;
+                    _quests[i].Data.ItemCounter = 0;
+
+                    for (int j = 0; j < _quests[i].NextQuests.Length; j++)
+                    {
+                        _quests[i].NextQuests[j].Data.IsActive = true;
+                    }
+
+                    if (_quests[i].IncreaseQuest != null)
+                        _quests[i].IncreaseQuest.Data.ItemCounter++;
+                }
+
+                hasActiveQuest = true;
+                break;
+            }
         }
-        else
+
+        if (!hasActiveQuest)
         {
-            if (DialogueManager.Instance.AreAnyResponseButtonsVisible())
-            {
-                DialogueManager.Instance.ShowDialogue(_initialDialogue);
-            }
-            else
-            {
-                DialogueManager.Instance.ShowDialogue(_noResponseDialogue);
-            }
-            
+            DialogueManager.Instance.ShowDialogue(_noQuestDialogue);
         }
-        
-        DialogueManager.Instance.ShowResponseDialogue(_responses);
     }
 
     // Detect when the player enters the NPC's interaction range
