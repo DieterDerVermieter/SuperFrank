@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using SuperFrank;
+using UnityEngine;
 
-public class CoinCollectible : Collectible
+public class CoinCollectible : QuestItemCollectible
 {
     [SerializeField] private int _coinValue;
 
