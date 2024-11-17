@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using SuperFrank;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,11 +37,13 @@ public class DialogueManager : MonoBehaviour
     private void StopDialogue()
     {
         _dialogueUI.SetActive(false);
+        SoundManager.Instance.StopMumble();
     }
 
     public void ShowDialogue(string dialogue)
     {
         _dialogueUI.SetActive(true);
+        //SoundManager.Instance.StartMumble();
         _dialogueText.text = dialogue;
     }
 
@@ -56,6 +59,7 @@ public class DialogueManager : MonoBehaviour
     public void HideDialogue()
     {
         _dialogueUI.SetActive(false);
+        SoundManager.Instance.StopMumble();
     }
     
     public void ShowResponseDialogue(Response[] responses)

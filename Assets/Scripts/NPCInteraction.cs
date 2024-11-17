@@ -52,6 +52,7 @@ public class NPCInteraction : MonoBehaviour
     // Display the dialogue
     void TriggerDialogue()
     {
+        SoundManager.Instance.StartMumble();
         bool hasActiveQuest = false;
         for (int i = 0; i < _quests.Length; i++)
         {

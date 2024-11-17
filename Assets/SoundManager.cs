@@ -9,7 +9,7 @@ namespace SuperFrank
     {
         [SerializeField] private AudioSource _bgMusic;
         [SerializeField] private AudioSource _sfx;
-        [SerializeField] private AudioClip _buttonClip;
+        [SerializeField] private AudioClip _buttonClip, _mumbleClip;
         
         public static SoundManager Instance;
         private void Awake()
@@ -33,12 +33,25 @@ namespace SuperFrank
         
         public void PlaySfx(AudioClip clip)
         {
+            _sfx.loop = false;
             _sfx.PlayOneShot(clip);
         }
         
         public void PlayButtonSound()
         {
             PlaySfx(_buttonClip);
+        }
+
+        public void StartMumble()
+        {
+            _sfx.loop = true;
+            _sfx.clip = _mumbleClip;
+            _sfx.Play();
+        }
+
+        public void StopMumble()
+        {
+            _sfx.Stop();
         }
         
     }

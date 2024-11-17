@@ -3253,6 +3253,7 @@ MonoBehaviour:
   _bgMusic: {fileID: 1826621851}
   _sfx: {fileID: 1014314617}
   _buttonClip: {fileID: 8300000, guid: 132a49ccf1586b64e82c67e0df6d5c0e, type: 3}
+  _mumbleClip: {fileID: 8300000, guid: 22a86a74849d27f47aaf5f3f5598cacd, type: 3}
 --- !u!4 &1492520291
 Transform:
   m_ObjectHideFlags: 0
