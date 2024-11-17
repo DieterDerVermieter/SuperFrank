@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
+    [SerializeField] private List<QuestItemKey> _startItems;
+    [SerializeField] private List<QuestItemKey> _currentItems;
+
     public static QuestManager Instance;
 
-    public List<QuestItem> Items = new();
+    private Dictionary<QuestItem, int> _items = new();
     private Dictionary<Quest, QuestStatus> _questStates = new();
 
 
@@ -22,6 +25,18 @@ public class QuestManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        GiveItems(_startItems);
+    }
+
+
+    private void Update()
+    {
+        _currentItems.Clear();
+        foreach (var (item, amount) in _items)
+        {
+            _currentItems.Add(new QuestItemKey() { item = item, amount = amount });
+        }
     }
 
 
@@ -35,19 +50,69 @@ public class QuestManager : MonoBehaviour
         _questStates[quest] = status;
     }
 
+
+    public int GetItemCount(QuestItem item)
+    {
+        return _items.TryGetValue(item, out int count) ? count : 0;
+    }
+
+    public void SetItemCount(QuestItem item, int count)
+    {
+        _items[item] = count;
+    }
+
+
+    public bool HasItems(IEnumerable<QuestItemKey> keys)
+    {
+        return keys.All(item => GetItemCount(item.item) >= item.amount);
+    }
+
     public bool HasItems(IEnumerable<QuestItem> items)
     {
-        return items.All(item => Items.Contains(item));
+        return items.All(item => GetItemCount(item) > 0);
+    }
+
+    public void GiveItems(IEnumerable<QuestItemKey> keys)
+    {
+        foreach(QuestItemKey key in keys)
+        {
+            int count = GetItemCount(key.item);
+            SetItemCount(key.item, count + key.amount);
+        }
     }
 
     public void GiveItems(IEnumerable<QuestItem> items)
     {
-        Items.AddRange(items);
+        foreach (QuestItem item in items)
+        {
+            int count = GetItemCount(item);
+            SetItemCount(item, count + 1);
+        }
+    }
+
+    public void TakeItems(IEnumerable<QuestItemKey> keys)
+    {
+        foreach (QuestItemKey key in keys)
+        {
+            int count = GetItemCount(key.item);
+            SetItemCount(key.item, count - key.amount);
+        }
     }
 
     public void TakeItems(IEnumerable<QuestItem> items)
     {
-        foreach (var item in items)
-            Items.Remove(item);
+        foreach (QuestItem item in items)
+        {
+            int count = GetItemCount(item);
+            SetItemCount(item, count - 1);
+        }
+    }
+
+    public void TakeItemsAll(IEnumerable<QuestItem> items)
+    {
+        foreach (QuestItem item in items)
+        {
+            SetItemCount(item, 0);
+        }
     }
 }

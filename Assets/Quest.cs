@@ -13,8 +13,8 @@ namespace SuperFrank
     [CreateAssetMenu(menuName = "Quests/Quest")]
     public class Quest : ScriptableObject
     {
-        public List<QuestItem> StartItems = new();
-        public List<QuestItem> CollectItems = new();
-        public List<QuestItem> RewardItems = new();
+        public List<QuestItemKey> StartItems = new();
+        public List<QuestItemKey> CollectItems = new();
+        public List<QuestItemKey> RewardItems = new();
     }
 }

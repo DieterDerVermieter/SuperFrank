@@ -1,4 +1,5 @@
 ﻿using SuperFrank;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -75,7 +76,7 @@ public class NPCInteraction : MonoBehaviour
                 if (hasCollectItems)
                 {
                     DialogueManager.Instance.ShowDialogue(_completeDialogue);
-                    QuestManager.Instance.TakeItems(_quest.CollectItems);
+                    QuestManager.Instance.TakeItemsAll(_quest.CollectItems.Select(key => key.item));
                     QuestManager.Instance.GiveItems(_quest.RewardItems);
                     QuestManager.Instance.SetQuestStatus(_quest, QuestStatus.Done);
                     OnQuestCompleted?.Invoke();

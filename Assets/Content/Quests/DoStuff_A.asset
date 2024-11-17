@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: DoStuff_A
   m_EditorClassIdentifier: 
   StartItems:
-  - {fileID: 11400000, guid: 76d81549a079a1241b90dddf603fd3fa, type: 2}
+  - item: {fileID: 11400000, guid: 76d81549a079a1241b90dddf603fd3fa, type: 2}
+    amount: 3
   CollectItems: []
   RewardItems:
-  - {fileID: 11400000, guid: 0a44cb2f3bd654b4b848373c08bf87e5, type: 2}
+  - item: {fileID: 11400000, guid: 0a44cb2f3bd654b4b848373c08bf87e5, type: 2}
+    amount: 2

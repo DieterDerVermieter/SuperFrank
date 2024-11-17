@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: FindBucket
   m_EditorClassIdentifier: 
   StartItems:
-  - {fileID: 11400000, guid: 57486b850ea33f144ad12742ec91f074, type: 2}
+  - item: {fileID: 11400000, guid: 57486b850ea33f144ad12742ec91f074, type: 2}
+    amount: 1
   CollectItems:
-  - {fileID: 11400000, guid: 555e884c7d04dbc46845e70f61ec5a45, type: 2}
+  - item: {fileID: 11400000, guid: 555e884c7d04dbc46845e70f61ec5a45, type: 2}
+    amount: 3
   RewardItems:
-  - {fileID: 11400000, guid: 76d81549a079a1241b90dddf603fd3fa, type: 2}
+  - item: {fileID: 11400000, guid: 76d81549a079a1241b90dddf603fd3fa, type: 2}
+    amount: 5

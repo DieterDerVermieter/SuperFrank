@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Finish
   m_EditorClassIdentifier: 
   StartItems:
-  - {fileID: 11400000, guid: 0a44cb2f3bd654b4b848373c08bf87e5, type: 2}
+  - item: {fileID: 11400000, guid: 0a44cb2f3bd654b4b848373c08bf87e5, type: 2}
+    amount: 2
   CollectItems:
-  - {fileID: 11400000, guid: 69aae0d8630963841b34969f1d9b0317, type: 2}
+  - item: {fileID: 11400000, guid: 69aae0d8630963841b34969f1d9b0317, type: 2}
+    amount: 1
   RewardItems:
-  - {fileID: 11400000, guid: 57486b850ea33f144ad12742ec91f074, type: 2}
+  - item: {fileID: 11400000, guid: 57486b850ea33f144ad12742ec91f074, type: 2}
+    amount: 1

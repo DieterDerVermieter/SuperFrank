@@ -9,7 +9,8 @@ namespace SuperFrank
         public override void Collect()
         {
             base.Collect();
-            QuestManager.Instance.Items.Add(_item);
+            int count = QuestManager.Instance.GetItemCount(_item);
+            QuestManager.Instance.SetItemCount(_item, count + 1);
         }
     }
 }
