@@ -835,7 +835,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<size=72>Im Rahmen den FrankenGameJam entwickelt von:</size>\n\n<size=60>Paul
+  m_text: "<size=72>Im Rahmen des FrankenGameJam entwickelt von:</size>\n\n<size=60>Paul
     Kloetzing\nLinus Ehmann \nDominik Rottmann</size> \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
