@@ -818,6 +818,10 @@ PrefabInstance:
       propertyPath: _name
       value: Acht-Arm-Alex
       objectReference: {fileID: 0}
+    - target: {fileID: 2607308420681025132, guid: 642454a265967e1468360a08fc66db60, type: 3}
+      propertyPath: _noQuestDialogue
+      value: Wetter ist ja toll ...
+      objectReference: {fileID: 0}
     - target: {fileID: 2663860894798233923, guid: 642454a265967e1468360a08fc66db60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -895,6 +899,10 @@ PrefabInstance:
       value: Barsch-Bert
       objectReference: {fileID: 0}
     - target: {fileID: 2856170322396070426, guid: 642454a265967e1468360a08fc66db60, type: 3}
+      propertyPath: _noQuestDialogue
+      value: Wetter ist ja toll ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856170322396070426, guid: 642454a265967e1468360a08fc66db60, type: 3}
       propertyPath: _quests.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 920fb6fb39f9fff478ae80916fb3ce1d, type: 2}
@@ -925,6 +933,10 @@ PrefabInstance:
     - target: {fileID: 3841141993575271248, guid: 642454a265967e1468360a08fc66db60, type: 3}
       propertyPath: _name
       value: Reh-casso
+      objectReference: {fileID: 0}
+    - target: {fileID: 3841141993575271248, guid: 642454a265967e1468360a08fc66db60, type: 3}
+      propertyPath: _noQuestDialogue
+      value: Wetter ist ja toll ...
       objectReference: {fileID: 0}
     - target: {fileID: 3841141993575271248, guid: 642454a265967e1468360a08fc66db60, type: 3}
       propertyPath: _quests.Array.data[0]
@@ -1018,6 +1030,10 @@ PrefabInstance:
       propertyPath: _name
       value: Schrauber-Schorsch
       objectReference: {fileID: 0}
+    - target: {fileID: 5366219757201251862, guid: 642454a265967e1468360a08fc66db60, type: 3}
+      propertyPath: _noQuestDialogue
+      value: Wetter ist ja toll ...
+      objectReference: {fileID: 0}
     - target: {fileID: 5601440830981727736, guid: 642454a265967e1468360a08fc66db60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.42394394
@@ -1079,6 +1095,10 @@ PrefabInstance:
       value: Flug-Florian
       objectReference: {fileID: 0}
     - target: {fileID: 5709334806691376009, guid: 642454a265967e1468360a08fc66db60, type: 3}
+      propertyPath: _noQuestDialogue
+      value: Wetter ist ja toll ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 5709334806691376009, guid: 642454a265967e1468360a08fc66db60, type: 3}
       propertyPath: _quests.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: fa3fa501003d3e5489b32e2a6fc53490, type: 2}
@@ -1093,6 +1113,10 @@ PrefabInstance:
     - target: {fileID: 5910425808646958133, guid: 642454a265967e1468360a08fc66db60, type: 3}
       propertyPath: _name
       value: Noodles
+      objectReference: {fileID: 0}
+    - target: {fileID: 5910425808646958133, guid: 642454a265967e1468360a08fc66db60, type: 3}
+      propertyPath: _noQuestDialogue
+      value: Wetter ist ja toll ...
       objectReference: {fileID: 0}
     - target: {fileID: 5910425808646958133, guid: 642454a265967e1468360a08fc66db60, type: 3}
       propertyPath: _quests.Array.data[0]
@@ -1231,6 +1255,10 @@ PrefabInstance:
       value: Brennholz-Gustavo
       objectReference: {fileID: 0}
     - target: {fileID: 7782205549082143130, guid: 642454a265967e1468360a08fc66db60, type: 3}
+      propertyPath: _noQuestDialogue
+      value: Wetter ist ja toll ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 7782205549082143130, guid: 642454a265967e1468360a08fc66db60, type: 3}
       propertyPath: _quests.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: d5efd8e13f12a3f4cab376e99a6c6c55, type: 2}
@@ -1341,6 +1369,10 @@ PrefabInstance:
     - target: {fileID: 8727453392283150479, guid: 642454a265967e1468360a08fc66db60, type: 3}
       propertyPath: _name
       value: Snackzilla
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727453392283150479, guid: 642454a265967e1468360a08fc66db60, type: 3}
+      propertyPath: _noQuestDialogue
+      value: Wetter ist ja toll ...
       objectReference: {fileID: 0}
     - target: {fileID: 8727453392283150479, guid: 642454a265967e1468360a08fc66db60, type: 3}
       propertyPath: _quests.Array.size
