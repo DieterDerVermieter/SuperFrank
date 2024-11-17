@@ -47,7 +47,7 @@ namespace SuperFrank
             DespawnAll();
             for (int i = 0; i < _items.Length; i++)
             {
-                _spawnedItems[i] = Instantiate(_items[i]);
+                _spawnedItems[i] = Instantiate(_items[i], transform);
                 _spawnedItems[i].transform.localPosition = _items[i].transform.localPosition;
                 _spawnedItems[i].transform.localRotation = _items[i].transform.localRotation;
                 _spawnedItems[i].transform.localScale = _items[i].transform.localScale;

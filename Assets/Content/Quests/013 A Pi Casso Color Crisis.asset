@@ -18,7 +18,7 @@ MonoBehaviour:
     er hat bestimmt, was dir schmeckt"
   ActiveResponses: []
   DoneResponses: []
-  NeededAmount: 5
+  NeededAmount: 2
   NextQuests:
   - {fileID: 11400000, guid: 9fbd63d436a7708459a84a45661e29c2, type: 2}
   IncreaseQuest: {fileID: 11400000, guid: ddf0346a25d60a944b1718f8e42fef4f, type: 2}

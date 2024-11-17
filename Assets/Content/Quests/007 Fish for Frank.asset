@@ -18,7 +18,7 @@ MonoBehaviour:
     verweisen. Platsch Er kann dir immer weiterhelfen!"
   ActiveResponses: []
   DoneResponses: []
-  NeededAmount: 5
+  NeededAmount: 10
   NextQuests:
   - {fileID: 11400000, guid: d5efd8e13f12a3f4cab376e99a6c6c55, type: 2}
   IncreaseQuest: {fileID: 11400000, guid: ddf0346a25d60a944b1718f8e42fef4f, type: 2}

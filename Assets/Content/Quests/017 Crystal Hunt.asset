@@ -16,6 +16,6 @@ MonoBehaviour:
   DoneText: Du bist ein wahrere Super Frank - bringe die Items schnell zu Acht-Arm-Alex!
   ActiveResponses: []
   DoneResponses: []
-  NeededAmount: 5
+  NeededAmount: 3
   NextQuests: []
   IncreaseQuest: {fileID: 11400000, guid: ddf0346a25d60a944b1718f8e42fef4f, type: 2}

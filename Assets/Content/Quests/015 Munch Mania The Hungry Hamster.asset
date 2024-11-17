@@ -19,7 +19,7 @@ MonoBehaviour:
     Dort kann man angeblich ... Schmatz Schmatz... Kristalle finden."
   ActiveResponses: []
   DoneResponses: []
-  NeededAmount: 5
+  NeededAmount: 1
   NextQuests:
-  - {fileID: 11400000, guid: c15db1b64f1070747953796e2e235d47, type: 2}
+  - {fileID: 11400000, guid: 971bce04649faa8489d6314ecad94648, type: 2}
   IncreaseQuest: {fileID: 11400000, guid: ddf0346a25d60a944b1718f8e42fef4f, type: 2}

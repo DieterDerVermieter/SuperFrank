@@ -19,7 +19,7 @@ MonoBehaviour:
     f\xFCr dich!"
   ActiveResponses: []
   DoneResponses: []
-  NeededAmount: 5
+  NeededAmount: 1
   NextQuests:
   - {fileID: 11400000, guid: fa3fa501003d3e5489b32e2a6fc53490, type: 2}
   IncreaseQuest: {fileID: 11400000, guid: ddf0346a25d60a944b1718f8e42fef4f, type: 2}

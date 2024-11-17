@@ -18,7 +18,7 @@ MonoBehaviour:
     nicht weit von hier entfernt - die freuen sich bestimmt \xFCber deinen Besuch!"
   ActiveResponses: []
   DoneResponses: []
-  NeededAmount: 5
+  NeededAmount: 1
   NextQuests:
   - {fileID: 11400000, guid: 920fb6fb39f9fff478ae80916fb3ce1d, type: 2}
   IncreaseQuest: {fileID: 11400000, guid: ddf0346a25d60a944b1718f8e42fef4f, type: 2}
