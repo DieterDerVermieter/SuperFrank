@@ -1,20 +1,22 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SuperFrank
 {
-    public enum QuestStatus
+    public struct QuestRuntimeData
     {
-        Waiting,
-        Active,
-        Done,
+        public bool IsActive;
+        public int ItemCounter;
     }
 
-    [CreateAssetMenu(menuName = "Quests/Quest")]
+    [CreateAssetMenu(menuName = "Quest")]
     public class Quest : ScriptableObject
     {
-        public List<QuestItemKey> StartItems = new();
-        public List<QuestItemKey> CollectItems = new();
-        public List<QuestItemKey> RewardItems = new();
+        public string ActiveText = "Please help me";
+        public string DoneText = "Thank you";
+
+        public int NeededAmount;
+        public Quest[] NextQuests;
+
+        public QuestRuntimeData Data;
     }
 }

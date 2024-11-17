@@ -4,8 +4,13 @@ namespace SuperFrank
 {
     public class ItemSpawner : MonoBehaviour
     {
+        [SerializeField] private Quest _questTrigger;
+
+
         private GameObject[] _items;
         private GameObject[] _spawnedItems;
+
+        private bool _isSpawned;
 
 
         private void Awake()
@@ -18,6 +23,21 @@ namespace SuperFrank
                 GameObject item = transform.GetChild(i).gameObject;
                 item.SetActive(false);
                 _items[i] = item;
+            }
+        }
+
+
+        private void Update()
+        {
+            if (!_isSpawned && _questTrigger.Data.IsActive)
+            {
+                Spawn();
+                _isSpawned = true;
+            }
+            else if(_isSpawned && !_questTrigger.Data.IsActive)
+            {
+                DespawnAll();
+                _isSpawned = false;
             }
         }
 

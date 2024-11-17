@@ -9,6 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06b3ff07b738c4c40be95772bf9d4eab, type: 3}
-  m_Name: Rocket
+  m_Script: {fileID: 11500000, guid: 526d9460d030a324e9db19a7e0609b72, type: 3}
+  m_Name: The Call of the Deep
   m_EditorClassIdentifier: 
+  ActiveText: Please help me
+  DoneText: Thank you
+  NeededAmount: 3
+  NextQuests: []
+  IsActive: 0
+  ItemCounter: 0
