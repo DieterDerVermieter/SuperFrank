@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class NPCInteraction : MonoBehaviour
 {
     [SerializeField] private Quest _quest;
+    [SerializeField] private NPCQuestIcon _questIcon;
 
     [Header("Dialog")]
     [SerializeField] private Response[] _responses;
@@ -32,6 +33,12 @@ public class NPCInteraction : MonoBehaviour
     public UnityEvent OnQuestCompleted;
 
 
+    private void Awake()
+    {
+        _questIcon.gameObject.SetActive(false);
+        _questIcon.Quest = _quest;
+    }
+
     void Update()
     {
         // Check if the player presses the interaction key (e.g., "E")
@@ -57,6 +64,7 @@ public class NPCInteraction : MonoBehaviour
                     QuestManager.Instance.TakeItems(_quest.StartItems);
                     QuestManager.Instance.SetQuestStatus(_quest, QuestStatus.Active);
                     OnQuestStarted?.Invoke();
+                    _questIcon.gameObject.SetActive(true);
                 }
                 else
                 {
@@ -71,6 +79,7 @@ public class NPCInteraction : MonoBehaviour
                     QuestManager.Instance.GiveItems(_quest.RewardItems);
                     QuestManager.Instance.SetQuestStatus(_quest, QuestStatus.Done);
                     OnQuestCompleted?.Invoke();
+                    _questIcon.gameObject.SetActive(false);
                 }
                 else
                 {
