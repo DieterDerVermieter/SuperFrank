@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 526d9460d030a324e9db19a7e0609b72, type: 3}
+  m_Name: 006 Fish for Frank Start
+  m_EditorClassIdentifier: 
+  ActiveText: Such du sack
+  DoneText: "Willkommen in Fisch-Dorf! Blubb blubb M\xF6chtest du Fischschuppen haben?
+    Platsch! Sie k\xF6nnten dir auf deinem Abenteuer n\xFCtzlich sein!"
+  ActiveResponses: []
+  DoneResponses:
+  - responseText: "Das w\xE4re super, genau das Brauche ich"
+    reply: "Okay, wie ich sehe, Frank... du bist ein gro\xDFer Fisch! Blubb blubb!
+      Das macht f\xFCr dich 10 Coins! Platsch!"
+  NeededAmount: 0
+  NextQuests:
+  - {fileID: 11400000, guid: 2ef1842de2acdfa429bdb614b0bff75e, type: 2}
+  IncreaseQuest: {fileID: 0}

@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 526d9460d030a324e9db19a7e0609b72, type: 3}
-  m_Name: 001 The Call of the Deep
+  m_Name: 014 Munch Mania The Hungry Hamster Start
   m_EditorClassIdentifier: 
-  ActiveText: "Du musst dich beeilen, SuperFrank! Seufz\u2026 Ich muss mich ausruhen..."
-  DoneText: ...
+  ActiveText: Such du sack
+  DoneText: "Nom Nom... Du willst essen? Knirsch Pech gehabt! Ich gebe dir nichts,
+    au\xDFer du tauschst mit mir! Ich bin nicht 'walerisch'"
   ActiveResponses: []
   DoneResponses: []
-  NeededAmount: 8
-  NextQuests: []
+  NeededAmount: 0
+  NextQuests:
+  - {fileID: 11400000, guid: bc1d8295ba719a340b7af7162795f3bc, type: 2}
   IncreaseQuest: {fileID: 0}

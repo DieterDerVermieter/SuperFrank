@@ -18,8 +18,10 @@ MonoBehaviour:
   ActiveResponses: []
   DoneResponses:
   - responseText: Genau! Ich brauche Federn
-    reply: 
-  NeededAmount: 5
+    reply: "Was f\xFCr ein wal-tastischer Zufall! Piu-piu Du musst f\xFCr mich das
+      Jump 'n' Run l\xF6sen \u2013 ich habe n\xE4mlich H\xF6henangst und kann den
+      Stock da oben nicht holen. Krah! Du schaffst das bestimmt!"
+  NeededAmount: 0
   NextQuests:
   - {fileID: 11400000, guid: 89da167db475ca740932fda00f5ef875, type: 2}
   IncreaseQuest: {fileID: 0}
