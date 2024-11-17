@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace SuperFrank
@@ -27,6 +28,9 @@ namespace SuperFrank
         [Header("Effects")]
         [SerializeField] private GameObject _landEffect;
 
+        [Header("Sounds")] 
+        [SerializeField] private AudioClip _jumpSound;
+
 
         private Vector3 _velocity;
 
@@ -46,7 +50,10 @@ namespace SuperFrank
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            
+        }
+
+        private void Start()
+        {
             _dialogueManager = DialogueManager.Instance;
         }
 
@@ -135,6 +142,7 @@ namespace SuperFrank
             if (isGrounded && !_hasLanded)
             {
                 _hasLanded = true;
+                SoundManager.Instance.PlaySfx(_jumpSound);
                 GameObject effect = Instantiate(_landEffect, transform.position, transform.rotation);
                 effect.AddComponent<DestroySystemWhenFinished>();
             }

@@ -62,6 +62,7 @@ MonoBehaviour:
   _camPitchStrength: 50
   _camPitchSmoothTime: 0.1
   _landEffect: {fileID: 4593184484909914552, guid: 2e1e9506f5904a64b81744324fb7cd50, type: 3}
+  _jumpSound: {fileID: 8300000, guid: dad04cb6a0d64c346830d202fb36bf77, type: 3}
 --- !u!114 &7699090947611998672
 MonoBehaviour:
   m_ObjectHideFlags: 0

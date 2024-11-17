@@ -13,7 +13,7 @@ public abstract class Collectible : MonoBehaviour
         // Play collect sound
         if (_collectSound != null)
         {
-            AudioSource.PlayClipAtPoint(_collectSound, transform.position);
+            SoundManager.Instance.PlaySfx(_collectSound);
         }
 
         if (_collectEffect != null)
