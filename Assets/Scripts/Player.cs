@@ -102,9 +102,6 @@ namespace SuperFrank
                 isGroundedFull = hit.distance <= _groundedDistance * 0.9f;
             }
 
-            Debug.Log($"isGrounded={isGrounded}");
-
-
             Vector3 velocity = _rigidbody.velocity;
             Vector3 velocity0 = rotInverse * velocity;
 

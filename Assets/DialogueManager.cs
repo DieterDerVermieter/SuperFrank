@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[DefaultExecutionOrder(-100)]
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
