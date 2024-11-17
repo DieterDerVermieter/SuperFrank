@@ -1,5 +1,6 @@
 ﻿using SuperFrank;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NPCInteraction : MonoBehaviour
 {
@@ -27,6 +28,10 @@ public class NPCInteraction : MonoBehaviour
     private bool _isPlayerInRange;
 
 
+    public UnityEvent OnQuestStarted;
+    public UnityEvent OnQuestCompleted;
+
+
     void Update()
     {
         // Check if the player presses the interaction key (e.g., "E")
@@ -51,6 +56,7 @@ public class NPCInteraction : MonoBehaviour
                     DialogueManager.Instance.ShowDialogue(_initialDialogue);
                     QuestManager.Instance.TakeItems(_quest.StartItems);
                     QuestManager.Instance.SetQuestStatus(_quest, QuestStatus.Active);
+                    OnQuestStarted?.Invoke();
                 }
                 else
                 {
@@ -64,6 +70,7 @@ public class NPCInteraction : MonoBehaviour
                     QuestManager.Instance.TakeItems(_quest.CollectItems);
                     QuestManager.Instance.GiveItems(_quest.RewardItems);
                     QuestManager.Instance.SetQuestStatus(_quest, QuestStatus.Done);
+                    OnQuestCompleted?.Invoke();
                 }
                 else
                 {
