@@ -19,5 +19,6 @@ MonoBehaviour:
   ActiveResponses: []
   DoneResponses: []
   NeededAmount: 5
-  NextQuests: []
+  NextQuests:
+  - {fileID: 11400000, guid: d5efd8e13f12a3f4cab376e99a6c6c55, type: 2}
   IncreaseQuest: {fileID: 11400000, guid: ddf0346a25d60a944b1718f8e42fef4f, type: 2}
