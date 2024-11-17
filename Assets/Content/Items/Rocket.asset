@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 526d9460d030a324e9db19a7e0609b72, type: 3}
-  m_Name: DoStuff
+  m_Script: {fileID: 11500000, guid: 06b3ff07b738c4c40be95772bf9d4eab, type: 3}
+  m_Name: Rocket
   m_EditorClassIdentifier: 
-  StartItems:
-  - {fileID: 11400000, guid: 76d81549a079a1241b90dddf603fd3fa, type: 2}
-  CollectItems: []
-  RewardItems:
-  - {fileID: 11400000, guid: 57486b850ea33f144ad12742ec91f074, type: 2}
