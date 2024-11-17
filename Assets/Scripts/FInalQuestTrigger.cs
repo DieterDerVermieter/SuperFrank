@@ -14,6 +14,7 @@ namespace SuperFrank
 
         private void Update()
         {
+#if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.P))
             {
                 Debug.Log("YOu cheater!!!");
@@ -28,6 +29,7 @@ namespace SuperFrank
             {
                 SceneManager.LoadScene(_index);
             }
+#endif
         }
     }
 }

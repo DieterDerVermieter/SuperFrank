@@ -53,6 +53,5 @@ namespace SuperFrank
         {
             _sfx.Stop();
         }
-        
     }
 }
