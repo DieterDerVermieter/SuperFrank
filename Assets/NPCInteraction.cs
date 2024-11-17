@@ -72,10 +72,14 @@ public class NPCInteraction : MonoBehaviour
 
                     _quests[i].Data.IsActive = false;
                     _quests[i].Data.ItemCounter = 0;
+
                     for (int j = 0; j < _quests[i].NextQuests.Length; j++)
                     {
                         _quests[i].NextQuests[j].Data.IsActive = true;
                     }
+
+                    if (_quests[i].IncreaseQuest != null)
+                        _quests[i].IncreaseQuest.Data.ItemCounter++;
                 }
 
                 hasActiveQuest = true;

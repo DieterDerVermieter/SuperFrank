@@ -172,7 +172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7233162484479072374, guid: e6953c21d14c9a042ac9c2d2f33df5d9, type: 3}
       propertyPath: _quests.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7233162484479072374, guid: e6953c21d14c9a042ac9c2d2f33df5d9, type: 3}
       propertyPath: _quests.Array.data[0]
@@ -181,7 +181,7 @@ PrefabInstance:
     - target: {fileID: 7233162484479072374, guid: e6953c21d14c9a042ac9c2d2f33df5d9, type: 3}
       propertyPath: _quests.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: ddf0346a25d60a944b1718f8e42fef4f, type: 2}
+      objectReference: {fileID: 11400000, guid: 284249df4c537254bb4395e1f3efac56, type: 2}
     - target: {fileID: 7233162484479072374, guid: e6953c21d14c9a042ac9c2d2f33df5d9, type: 3}
       propertyPath: OnQuestStarted.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -407,7 +407,7 @@ MonoBehaviour:
   _collectSound: {fileID: 0}
   _collectEffect: {fileID: 0}
   _collectEffectScale: 1
-  _quest: {fileID: 11400000, guid: ddf0346a25d60a944b1718f8e42fef4f, type: 2}
+  _quest: {fileID: 11400000, guid: 284249df4c537254bb4395e1f3efac56, type: 2}
 --- !u!850595691 &513362604
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1008,7 +1008,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &744813812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1021,7 +1021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eddb0454364e2af42a0976cae01eb863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _questTrigger: {fileID: 11400000, guid: ddf0346a25d60a944b1718f8e42fef4f, type: 2}
+  _questTrigger: {fileID: 11400000, guid: 284249df4c537254bb4395e1f3efac56, type: 2}
 --- !u!4 &744813813
 Transform:
   m_ObjectHideFlags: 0
@@ -1234,7 +1234,7 @@ MonoBehaviour:
   _collectSound: {fileID: 0}
   _collectEffect: {fileID: 0}
   _collectEffectScale: 1
-  _quest: {fileID: 11400000, guid: ddf0346a25d60a944b1718f8e42fef4f, type: 2}
+  _quest: {fileID: 11400000, guid: 284249df4c537254bb4395e1f3efac56, type: 2}
 --- !u!4 &884007399
 Transform:
   m_ObjectHideFlags: 0
@@ -1321,7 +1321,7 @@ MonoBehaviour:
   _collectSound: {fileID: 0}
   _collectEffect: {fileID: 0}
   _collectEffectScale: 1
-  _quest: {fileID: 11400000, guid: ddf0346a25d60a944b1718f8e42fef4f, type: 2}
+  _quest: {fileID: 11400000, guid: 284249df4c537254bb4395e1f3efac56, type: 2}
 --- !u!1001 &903297507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1454,7 +1454,7 @@ MonoBehaviour:
   _collectSound: {fileID: 0}
   _collectEffect: {fileID: 0}
   _collectEffectScale: 1
-  _quest: {fileID: 11400000, guid: ddf0346a25d60a944b1718f8e42fef4f, type: 2}
+  _quest: {fileID: 11400000, guid: 284249df4c537254bb4395e1f3efac56, type: 2}
 --- !u!1 &1385968874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1525,7 +1525,7 @@ MonoBehaviour:
   _collectSound: {fileID: 0}
   _collectEffect: {fileID: 0}
   _collectEffectScale: 1
-  _quest: {fileID: 11400000, guid: ddf0346a25d60a944b1718f8e42fef4f, type: 2}
+  _quest: {fileID: 11400000, guid: 284249df4c537254bb4395e1f3efac56, type: 2}
 --- !u!1001 &1411531581
 PrefabInstance:
   m_ObjectHideFlags: 0

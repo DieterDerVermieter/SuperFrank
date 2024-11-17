@@ -2,7 +2,7 @@
 
 namespace SuperFrank
 {
-    public struct QuestRuntimeData
+    public class QuestRuntimeData
     {
         public bool IsActive;
         public int ItemCounter;
@@ -19,7 +19,8 @@ namespace SuperFrank
 
         public int NeededAmount;
         public Quest[] NextQuests;
+        public Quest IncreaseQuest;
 
-        public QuestRuntimeData Data;
+        public QuestRuntimeData Data = new();
     }
 }

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 526d9460d030a324e9db19a7e0609b72, type: 3}
+  m_Name: 002 Tool Heist Get It Back Start
+  m_EditorClassIdentifier: 
+  ActiveText: ...
+  DoneText: "Hello Text: Oh, ein Wal! Damit hab ich ja gar nicht gerechnet... Was
+    kann ich f\xFCr dich tun, Super Wal Frank?"
+  ActiveResponses: []
+  DoneResponses:
+  - responseText: Ich brauche deine Werkzeuge
+    reply: "Ich gebe dir meine Werkzeuge, aber nur, wenn du mir meinen Schraubendreher
+      zur\xFCckholst! Eine freche Schnecke hat ihn gestohlen! Sie versteckt sich
+      im Wald \u2013 schau in den B\xFCschen nach, die schnelle Schnecke ist dort
+      irgendwo. Bringe mir den gestohlenen Schraubendreher, und du bekommst all mein
+      Werkzeug!"
+  NeededAmount: 0
+  NextQuests:
+  - {fileID: 11400000, guid: 284249df4c537254bb4395e1f3efac56, type: 2}
