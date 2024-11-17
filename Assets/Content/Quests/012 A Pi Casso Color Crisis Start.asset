@@ -10,12 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 526d9460d030a324e9db19a7e0609b72, type: 3}
-  m_Name: 001 The Call of the Deep
+  m_Name: 012 A Pi Casso Color Crisis Start
   m_EditorClassIdentifier: 
-  ActiveText: "Du musst dich beeilen, SuperFrank! Seufz\u2026 Ich muss mich ausruhen..."
-  DoneText: ...
+  ActiveText: Such du sack
+  DoneText: Oh non ! (oh nein) Ich habe meine Farben vergessen! Suche mein letzes
+    Kunstwerk auf und bringe mir die Flaschen mit roter & blauer Farbe. Mein Kunstwerk
+    war ein Totempfahl aus Holz.
   ActiveResponses: []
   DoneResponses: []
-  NeededAmount: 8
-  NextQuests: []
+  NeededAmount: 0
+  NextQuests:
+  - {fileID: 11400000, guid: 2a4530038086f6347a4d6456438a14fd, type: 2}
   IncreaseQuest: {fileID: 0}

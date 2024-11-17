@@ -10,12 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 526d9460d030a324e9db19a7e0609b72, type: 3}
-  m_Name: 001 The Call of the Deep
+  m_Name: 016 Crystal Hunt Start
   m_EditorClassIdentifier: 
-  ActiveText: "Du musst dich beeilen, SuperFrank! Seufz\u2026 Ich muss mich ausruhen..."
-  DoneText: ...
+  ActiveText: Such du sack
+  DoneText: "Es gibt einen bereits gespawnten Turm hier kann man asset kristalle
+    setzen - die Challenge k\xF6nnte sein, dass nur eine bestimmte farbe collectable
+    ist und man die Anzahl (siehe oben) braucht."
   ActiveResponses: []
   DoneResponses: []
-  NeededAmount: 8
-  NextQuests: []
+  NeededAmount: 0
+  NextQuests:
+  - {fileID: 11400000, guid: 971bce04649faa8489d6314ecad94648, type: 2}
   IncreaseQuest: {fileID: 0}

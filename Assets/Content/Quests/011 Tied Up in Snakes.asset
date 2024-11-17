@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 526d9460d030a324e9db19a7e0609b72, type: 3}
-  m_Name: 003 Tool Heist Get It Back
+  m_Name: 011 Tied Up in Snakes
   m_EditorClassIdentifier: 
   ActiveText: Hmm... Das ist noch nicht alles... SuperFrank.
-  DoneText: "Du hast dein Wort gehalten, danke dir! Hier ist mein ganzes Werkzeug,
-    wie versprochen. Und noch ein Tipp: Solltest du mal Federn brauchen, frag doch
-    mal bei Flug-Florian \u2013 er lebt oben in den Bergen und hat sicher welche
-    f\xFCr dich!"
+  DoneText: "Wuhuuu! Meine Brille! Zisch Hier, dein Seil \u2013 wie versprochen!
+    Mein Freund Reh-casso ben\xF6tigt auch Hilfe bitte helfen Ihn auch! Du wirst
+    ihn nicht weit von hier finden "
   ActiveResponses: []
   DoneResponses: []
   NeededAmount: 5
   NextQuests:
-  - {fileID: 11400000, guid: fa3fa501003d3e5489b32e2a6fc53490, type: 2}
+  - {fileID: 11400000, guid: ade217b5a519d15419d645ab4f561d1e, type: 2}
   IncreaseQuest: {fileID: 11400000, guid: ddf0346a25d60a944b1718f8e42fef4f, type: 2}

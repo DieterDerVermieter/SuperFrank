@@ -65,3 +65,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startQuest: {fileID: 11400000, guid: c7d5b63dd25076a4d9a3467e6a69c189, type: 2}
+  _allQuests:
+  - {fileID: 11400000, guid: c7d5b63dd25076a4d9a3467e6a69c189, type: 2}
+  - {fileID: 11400000, guid: ddf0346a25d60a944b1718f8e42fef4f, type: 2}
+  - {fileID: 11400000, guid: 1b11e6614e0c4e0409b3589ae4d3b15b, type: 2}
+  - {fileID: 11400000, guid: 284249df4c537254bb4395e1f3efac56, type: 2}
+  - {fileID: 11400000, guid: fa3fa501003d3e5489b32e2a6fc53490, type: 2}
+  - {fileID: 11400000, guid: 89da167db475ca740932fda00f5ef875, type: 2}
+  - {fileID: 11400000, guid: 920fb6fb39f9fff478ae80916fb3ce1d, type: 2}
+  - {fileID: 11400000, guid: 2ef1842de2acdfa429bdb614b0bff75e, type: 2}
+  - {fileID: 11400000, guid: d5efd8e13f12a3f4cab376e99a6c6c55, type: 2}
+  - {fileID: 11400000, guid: 72d74a4b7eb8b4547839fad6da4395e4, type: 2}
+  - {fileID: 11400000, guid: c3934dc77d976c84dac27d6c53290a59, type: 2}
+  - {fileID: 11400000, guid: 9331177e2732ddd459625d449e29f909, type: 2}
+  - {fileID: 11400000, guid: ade217b5a519d15419d645ab4f561d1e, type: 2}
+  - {fileID: 11400000, guid: 2a4530038086f6347a4d6456438a14fd, type: 2}
+  - {fileID: 11400000, guid: 9fbd63d436a7708459a84a45661e29c2, type: 2}
+  - {fileID: 11400000, guid: bc1d8295ba719a340b7af7162795f3bc, type: 2}
+  - {fileID: 11400000, guid: c15db1b64f1070747953796e2e235d47, type: 2}
+  - {fileID: 11400000, guid: 971bce04649faa8489d6314ecad94648, type: 2}
+  _displayPrefab: {fileID: 4461467342868829991, guid: 832520afbd913a4478a21daca458881c, type: 3}
+  _uiQuestContainer: {fileID: 0}
+  _uiQuestHint: {fileID: 0}

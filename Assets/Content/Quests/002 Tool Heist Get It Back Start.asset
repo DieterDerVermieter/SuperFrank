@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 002 Tool Heist Get It Back Start
   m_EditorClassIdentifier: 
   ActiveText: ...
-  DoneText: "Hello Text: Oh, ein Wal! Damit hab ich ja gar nicht gerechnet... Was
-    kann ich f\xFCr dich tun, Super Wal Frank?"
+  DoneText: "Oh, ein Wal! Damit hab ich ja gar nicht gerechnet... Was kann ich f\xFCr
+    dich tun, Super Wal Frank?"
   ActiveResponses: []
   DoneResponses:
   - responseText: Ich brauche deine Werkzeuge
@@ -26,3 +26,4 @@ MonoBehaviour:
   NeededAmount: 0
   NextQuests:
   - {fileID: 11400000, guid: 284249df4c537254bb4395e1f3efac56, type: 2}
+  IncreaseQuest: {fileID: 0}

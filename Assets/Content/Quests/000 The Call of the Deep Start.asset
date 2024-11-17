@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 526d9460d030a324e9db19a7e0609b72, type: 3}
-  m_Name: 000 Speak To Alex
+  m_Name: 000 The Call of the Deep Start
   m_EditorClassIdentifier: 
   ActiveText: ...
-  DoneText: "Hello Text: Ahh... ein Wal! Ich wusste jemand w\xFCrde mich finden.
-    Aber nun bist du auch auf diesem Planeten gestrandet... Keine Angst ich habe
-    einen Plan wie wir hier wieder wegkommen !\r\nAber ich f\xFCrchte... ich bin
-    zu ersch\xF6pft... zu ausgetrocknet. Ich kann mich kaum bewegen, geschweige denn
-    helfen...\r\nIch war einst ein gro\xDFer Entdecker der Meere ... ein Meister
-    der Str\xF6mungen ... aber jetzt ... jetzt schwinden meine Kr\xE4fte an diesem
-    trockenen Ort. Kannst du mir helfen? "
+  DoneText: "Ahh... ein Wal! Ich wusste jemand w\xFCrde mich finden. Aber nun bist
+    du auch auf diesem Planeten gestrandet... Keine Angst ich habe einen Plan wie
+    wir hier wieder wegkommen !\r\nAber ich f\xFCrchte... ich bin zu ersch\xF6pft...
+    zu ausgetrocknet. Ich kann mich kaum bewegen, geschweige denn helfen...\r\nIch
+    war einst ein gro\xDFer Entdecker der Meere ... ein Meister der Str\xF6mungen
+    ... aber jetzt ... jetzt schwinden meine Kr\xE4fte an diesem trockenen Ort. Kannst
+    du mir helfen? "
   ActiveResponses: []
   DoneResponses:
   - responseText: JA
@@ -35,3 +35,4 @@ MonoBehaviour:
   NextQuests:
   - {fileID: 11400000, guid: ddf0346a25d60a944b1718f8e42fef4f, type: 2}
   - {fileID: 11400000, guid: 1b11e6614e0c4e0409b3589ae4d3b15b, type: 2}
+  IncreaseQuest: {fileID: 0}
