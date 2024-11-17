@@ -1,12 +1,15 @@
-﻿using System;
+﻿using SuperFrank;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
     public static QuestManager Instance;
 
-    public List<Quest> quests;
+    public List<QuestItem> Items = new();
+    private Dictionary<Quest, QuestStatus> _questStates = new();
+
 
     private void Awake()
     {
@@ -21,46 +24,30 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    private void Start()
+
+    public QuestStatus GetQuestStatus(Quest quest)
     {
-        LoadQuestStatus();
+        return _questStates.TryGetValue(quest, out QuestStatus status) ? status : QuestStatus.Waiting;
     }
 
-    public void CompleteQuest(string questName)
+    public void SetQuestStatus(Quest quest, QuestStatus status)
     {
-        Quest quest = quests.Find(q => q.QuestName == questName);
-        if (quest != null)
-        {
-            quest.IsCompleted = true;
-            SaveQuestStatus();
-        }
+        _questStates[quest] = status;
     }
 
-    public bool IsQuestCompleted(string questName)
+    public bool HasItems(IEnumerable<QuestItem> items)
     {
-        Quest quest = quests.Find(q => q.QuestName == questName);
-        return quest != null && quest.IsCompleted;
+        return items.All(item => Items.Contains(item));
     }
-    
-    public void LoadQuestStatus()
+
+    public void GiveItems(IEnumerable<QuestItem> items)
     {
-        foreach (var quest in quests)
-        {
-            quest.IsCompleted = PlayerPrefs.GetInt(quest.QuestName, 0) == 1;
-        }
+        Items.AddRange(items);
     }
-    
-    public void SaveQuestStatus()
+
+    public void TakeItems(IEnumerable<QuestItem> items)
     {
-        foreach (var quest in quests)
-        {
-            PlayerPrefs.SetInt(quest.QuestName, quest.IsCompleted ? 1 : 0);
-        }
-        PlayerPrefs.Save();
-    }
-    
-    public void ResetAllSavedData()
-    {
-        PlayerPrefs.DeleteAll();
+        foreach (var item in items)
+            Items.Remove(item);
     }
 }

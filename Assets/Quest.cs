@@ -1,8 +1,20 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-[System.Serializable]
-public class Quest
+namespace SuperFrank
 {
-    public string QuestName;
-    public bool IsCompleted { get; set; } = false;
+    public enum QuestStatus
+    {
+        Waiting,
+        Active,
+        Done,
+    }
+
+    [CreateAssetMenu(menuName = "Quests/Quest")]
+    public class Quest : ScriptableObject
+    {
+        public List<QuestItem> StartItems = new();
+        public List<QuestItem> CollectItems = new();
+        public List<QuestItem> RewardItems = new();
+    }
 }

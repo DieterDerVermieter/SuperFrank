@@ -39,8 +39,8 @@ namespace SuperFrank
 
 
         private static readonly int _speedAnimId = Animator.StringToHash("speed");
-
         private DialogueManager _dialogueManager;
+
         
         private void Awake()
         {
